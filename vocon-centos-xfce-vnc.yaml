@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vocon-centos-xfce-vnc
+  labels:
+    name: vocon-centos-xfce-vnc
+spec:
+  containers:
+  - name: vocon-centos-xfce-vnc
+    image: gabrielnarodrigues/vocon-centos-xfce-vnc:test
+    ports:
+        - containerPort: 6901
+          hostPort: 6901
+          name: browser
+        - containerPort: 5901
+          hostPort: 5901
+          name: vnc
+  volumes:
+    - name: vocon-centos-xfce-vnc-persistent-storage
+      persistentVolumeClaim:
+        claimName: my-claim
